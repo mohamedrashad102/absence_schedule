@@ -36,7 +36,7 @@ class SectionItem extends StatelessWidget {
               ),
               child: Container(
                 color: sectionsCubit.isCurrentSection(sectionIndex)
-                    ? Colors.blue
+                    ? const Color(0XFF2a3942)
                     : Colors.transparent,
                 child: Row(
                   children: [

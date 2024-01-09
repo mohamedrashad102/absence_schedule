@@ -13,12 +13,8 @@ class LocalData {
   }
 
   static void setSections(List<Section> sections) {
-    try {
-      String json = jsonEncode(sections);
-      _pref.setString(Keys.sections, json);
-    } on Exception catch (e) {
-      print('error on setSections: ${e.toString()}');
-    }
+    String json = jsonEncode(sections);
+    _pref.setString(Keys.sections, json);
   }
 
   static List<Section> getSections() {

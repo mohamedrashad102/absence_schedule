@@ -4,7 +4,7 @@ import 'package:absence_schedule/features/absence_schedule/cubit/sections_cubit/
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../cubit/absence_cubit/absence_state.dart';
+import '../../../cubit/absence_cubit/absence_state.dart';
 
 class AbsenceScheduleAppBar extends StatelessWidget
     implements PreferredSizeWidget {
@@ -18,7 +18,9 @@ class AbsenceScheduleAppBar extends StatelessWidget
           ? BackButton(
               onPressed: () => _unSelectSection(context),
             )
-          : null,
+          : IconButton(
+              onPressed: () => _closeSection(context),
+              icon: const Icon(Icons.close)),
       centerTitle: true,
       title: BlocBuilder<AbsenceCubit, AbsenceState>(
         builder: (context, state) {
@@ -36,6 +38,11 @@ class AbsenceScheduleAppBar extends StatelessWidget
     SectionsCubit.of(context).unSelectOldSection();
     AbsenceCubit.of(context).initial();
     Navigator.pop(context);
+  }
+
+  _closeSection(BuildContext context) {
+    SectionsCubit.of(context).unSelectOldSection();
+    AbsenceCubit.of(context).initial();
   }
 
   _isMobile(BuildContext context) {

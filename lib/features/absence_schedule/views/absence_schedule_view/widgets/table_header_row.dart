@@ -1,5 +1,6 @@
-import 'package:absence_schedule/features/absence_schedule/views/absence_schedule_view/table_item.dart';
 import 'package:flutter/material.dart';
+
+import 'table_item.dart';
 
 tableHeaderRow(int length) {
   return TableRow(

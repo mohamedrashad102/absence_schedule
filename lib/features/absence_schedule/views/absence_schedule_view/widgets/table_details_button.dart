@@ -2,7 +2,8 @@ import 'package:absence_schedule/features/absence_schedule/cubit/absence_cubit/a
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../cubit/absence_cubit/absence_state.dart';
+import '../../../cubit/absence_cubit/absence_state.dart';
+
 
 class TableDetailsButton extends StatelessWidget {
   const TableDetailsButton({

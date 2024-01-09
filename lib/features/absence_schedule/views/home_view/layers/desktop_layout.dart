@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-import '../absence_schedule_view/absence_schedule_view.dart';
-import '../sections_view/sections_view.dart';
+import '../../absence_schedule_view/absence_schedule_view.dart';
+import '../../sections_view/sections_view.dart';
 
-class TabletLayout extends StatelessWidget {
-  const TabletLayout({
+class DesktopLayout extends StatelessWidget {
+  const DesktopLayout({
     super.key,
   });
 
@@ -13,7 +13,7 @@ class TabletLayout extends StatelessWidget {
     return Row(
       children: [
         const Expanded(
-          flex: 2,
+          flex: 7,
           child: AbsenceScheduleView(),
         ),
         Container(
@@ -22,7 +22,7 @@ class TabletLayout extends StatelessWidget {
           color: Colors.grey.withOpacity(0.5),
         ),
         const Expanded(
-          flex: 1,
+          flex: 2,
           child: SectionsView(),
         ),
       ],

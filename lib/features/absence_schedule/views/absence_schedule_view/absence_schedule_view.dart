@@ -3,10 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../cubit/absence_cubit/absence_state.dart';
-import 'absence_schedule_app_bar.dart';
-import 'custom_table.dart';
-import 'custom_table_row.dart';
-import 'table_header_row.dart';
+import 'widgets/absence_schedule_app_bar.dart';
+import 'widgets/absence_schedule_body.dart';
 
 class AbsenceScheduleView extends StatelessWidget {
   const AbsenceScheduleView({super.key});
@@ -16,33 +14,15 @@ class AbsenceScheduleView extends StatelessWidget {
     return BlocBuilder<AbsenceCubit, AbsenceState>(
       builder: (context, state) {
         if (state is AbsenceSuccessState) {
-          final absenceCubit = AbsenceCubit.of(context);
-          return Scaffold(
-            appBar: const AbsenceScheduleAppBar(),
-            body: CustomTable(
-              children: [
-                tableHeaderRow(
-                    absenceCubit.section.students.first.daysStates.length),
-                ...absenceCubit.section.students.asMap().entries.map(
-                      (entry) => customTableRow(
-                        studentIndex: entry.key,
-                        student: entry.value,
-                        controller: absenceCubit.controllers[entry.key],
-                        onNameChange: (name) => absenceCubit.changeStudentName(
-                          name: name,
-                          studentIndex: entry.key,
-                        ),
-                      ),
-                    ),
-              ],
-            ),
+          return const Scaffold(
+            appBar: AbsenceScheduleAppBar(),
+            body: AbsenceScheduleBody(),
           );
         } else if (state is AbsenceLoadingState) {
           return const Center(
             child: CircularProgressIndicator(),
           );
         }
-
         return const SizedBox();
       },
     );
